@@ -51,7 +51,10 @@ TEST_F(WeatherTestCase, TestTomorrowDifSame) {
     EXPECT_NO_THROW(WeatherTestCase::TestTomorrowDif("Los Angeles"));
 }
 
+TEST_F(WeatherTestCase, InvalidArgument) {
+    EXPECT_THROW(WeatherTestCase::TestTomorrowDif("Dolgoprudny"), std::invalid_argument);
+}
+
 TEST_F(WeatherTestCase, ApiKey) {
     EXPECT_NO_THROW(WeatherTestCase::TestApyKey("abacaba"));
 }
-

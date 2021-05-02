@@ -8,6 +8,11 @@
 cpr::Response WeatherMock::Get (const std::string& city, const cpr::Url& url) {
     cpr::Response res;
 
+    if (city == "Dolgoprudny") {
+        res.status_code = 403;
+        return res;
+    }
+
     res.status_code = 200;
 
     float temp = 25.3;
