@@ -10,5 +10,7 @@
 
 class WeatherMock : public Weather {
 public:
-    cpr::Response Get (const std::string& city, const cpr::Url& url);
+    MOCK_METHOD(cpr::Response, Get, (const std::string& city, const cpr::Url& url), (override));
+
+    WeatherMock();
 };

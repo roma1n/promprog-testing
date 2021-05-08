@@ -5,7 +5,7 @@
 #include "WeatherMock.h"
 
 
-cpr::Response WeatherMock::Get (const std::string& city, const cpr::Url& url) {
+cpr::Response MockGet (const std::string& city, const cpr::Url& url) {
     cpr::Response res;
 
     if (city == "Dolgoprudny") {
@@ -43,4 +43,13 @@ cpr::Response WeatherMock::Get (const std::string& city, const cpr::Url& url) {
         + std::to_string(tomorrow_temp) + "} } ] }";
 
     return res;
+}
+
+WeatherMock::WeatherMock(): Weather() {
+    ON_CALL(
+        *this,
+        Get
+    ).WillByDefault([](const std::string& city, const cpr::Url& url){
+        return MockGet(city, url);
+    });
 }
